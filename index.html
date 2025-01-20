@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend+Giga:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <h1>Gerador de cores</h1>
+    </header>
+
+    <div id="main">
+      <div id="menu">
+        <form action="">
+          <div>
+            <label for="velocity">delay: </label>
+            <input
+              type="range"
+              name="velocity"
+              class="range"
+              id="velocity"
+              min="0.5"
+              max="1.3"
+              step="any"
+            />
+          </div>
+
+          <div>
+            <label for="transition">suavidade:</label>
+            <input
+              type="range"
+              name="transition"
+              class="range"
+              id="transition"
+              min="0.1"
+              max="1"
+              step="any"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

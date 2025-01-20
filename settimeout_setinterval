@@ -1,0 +1,34 @@
+/*
+
+em python, a gente fazia com que o código "parasse" de executar a partir da função "sleep", presente na biblioteca time
+
+no javascript, podemos fazer isso majoritariamente de duas maneiras:
+1. setTimeout: o código será executado apenas UMA vez depois do tempo especificado (similar ao Python)
+2. setInterval: o código ficará executando infinitamente (como num while True), sendo que o intervalo entre as execuções é determinado pelo tempo especificado na função 
+
+no nosso caso, eu utilizei o setInterval, porque eu quero ele mude de cor infinitamente, a partir do tempo especificado pelo usuário
+
+porém, assim como todo while True precisa de um break, todo setInterval precisa de um clearInterval(x), sendo que esse "x" é a variável que o intervalo está armazenado
+
+SINTAXE DO INTERVAL
+var interval = setInterval(codigo, intervalo);
+clearInterval(interval)
+
+se nós não armazenarmos o intervalo em uma variável (que nesse caso, é a variável intervalo), jamais seremos capazes de conseguir "dar um break nesse while"
+
+
+CÓDIGO DO SITE: 
+
+        let interval;
+        velocidade.addEventListener("input", function () {
+        if (interval) {
+            clearInterval(interval);
+        }
+        interval = setInterval( () => changeColor(body, generateRgb()), 
+        velocidade.value * 1000);
+        });
+
+-primeiro, criamos fora do event a variável que vai armazenar o id do intervalo (let interval), depois, fazemos uma checagem para verificar se há intervalo (if (interval) ). Se não for, significa que a variável não foi atribuída ainda, e seu valor é por padrão undefined. Se já houver um intervalo em processo, é necessário interrompe-lo para iniciar outro intervalo (se não vai ficar rolando mais de um intervalo ao mesmo tempo, fazendo com que o código rode duas ou mais vezes simultaneamente)
+-depois, atribui a interval o código que necessita de ser executado (função de cores) e o intervalo necessário (escolhido pelo user)
+
+*/

@@ -1,0 +1,27 @@
+/* funções */
+//obs: estamos criando as funções no fim do código, mas estamos chamando-as acima, e isso só é possível porque estamos utilizando a palavra "function" para cria-las (sim, existem outras maneiras de criar funções)
+// antes de mostrar essas maneiras, é interessante entender o motivo de function funcionar, mesmo sendo declarado depois. Isso ocorre porque "function" deixa as funções elevadas (hoisted), ou seja, durante a compilação, o interpretador eleva a declaração da função para o topo do escopo, fazendo com que não dê erro
+
+/* 
+é possível criar funções dentro de variáveis, e dá para fazer isso de dois jeitos:
+
+1. utilizando function dentro de um var, let ou const
+
+const soma = function(a, b) {
+    return a + b
+}
+var subtrai = function(a, b){
+    return a - b
+}
+
+funções dentro de "const" ou "let" não são elevadas, mas "var" sim. Porém, curiosamente, isso não significa que você possa utilizar var antes de sua atribuição. Ou seja, a função subtrai é inicializada no topo do escopo (var subtrai;), mas a função não é atribuida, deixando a variável no estado de "undefined". Conclusão: não é possível em ambos os casos
+
+2. utilizando arrow function
+
+as arrows functions são as famosas "funções anônimas", ou seja, elas não possuem um nome definido. Isso significa que a única maneira de se referir a elas é associando-as a uma variável. Uma das vantagens da arrow function é a simplicidade em relação às funções normais
+
+const soma = (a, b) => a + b
+//o seu uso é identico ao de uma função normal.
+
+porém, também não é elevada, fazendo com que "function" seja o único meio de utilizar uma função que é atribuida depois :(
+ */
