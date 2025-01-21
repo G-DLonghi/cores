@@ -1,10 +1,11 @@
-/*
+/\*
 
 em python, a gente fazia com que o código "parasse" de executar a partir da função "sleep", presente na biblioteca time
 
 no javascript, podemos fazer isso majoritariamente de duas maneiras:
+
 1. setTimeout: o código será executado apenas UMA vez depois do tempo especificado (similar ao Python)
-2. setInterval: o código ficará executando infinitamente (como num while True), sendo que o intervalo entre as execuções é determinado pelo tempo especificado na função 
+2. setInterval: o código ficará executando infinitamente (como num while True), sendo que o intervalo entre as execuções é determinado pelo tempo especificado na função
 
 no nosso caso, eu utilizei o setInterval, porque eu quero ele mude de cor infinitamente, a partir do tempo especificado pelo usuário
 
@@ -16,19 +17,62 @@ clearInterval(interval)
 
 se nós não armazenarmos o intervalo em uma variável (que nesse caso, é a variável intervalo), jamais seremos capazes de conseguir "dar um break nesse while"
 
+CÓDIGO DO SITE:
 
-CÓDIGO DO SITE: 
-
-        let interval;
+        let interval; //variavel para armazenar o interval
         velocidade.addEventListener("input", function () {
         if (interval) {
             clearInterval(interval);
         }
-        interval = setInterval( () => changeColor(body, generateRgb()), 
-        velocidade.value * 1000);
+        interval = setInterval(
+            () => changeColor(body, generateRgb(), transicao.value),
+            velocidade.value * 1000
+        );
+
+        if (button.src == "http://127.0.0.1:5500/images/pause-button.png") {
+            button.src = "http://127.0.0.1:5500/images/play-button.png";
+        }
+        //esse if serve para "ligar" o botão caso esteja desligado, para assim começar a "rodar" o site de novo
         });
 
 -primeiro, criamos fora do event a variável que vai armazenar o id do intervalo (let interval), depois, fazemos uma checagem para verificar se há intervalo (if (interval) ). Se não for, significa que a variável não foi atribuída ainda, e seu valor é por padrão undefined. Se já houver um intervalo em processo, é necessário interrompe-lo para iniciar outro intervalo (se não vai ficar rolando mais de um intervalo ao mesmo tempo, fazendo com que o código rode duas ou mais vezes simultaneamente)
 -depois, atribui a interval o código que necessita de ser executado (função de cores) e o intervalo necessário (escolhido pelo user)
 
-*/
+Chamada de Função VS Referência a Função
+
+    interval = setInterval(
+        () => changeColor(body, generateRgb(), transicao.value),
+        velocidade.value * 1000
+    );
+
+Se estudarmos a sintaxe do setInterval, podemos ver que ele tem como parâmetros uma função e um tempo em ms
+
+    setInterval(function, time)
+
+Porém, é possível observar que no código, a função é passada de um jeito diferente: "() => changeColor..."
+Qual a necessidade de utilizar Arrow Function? Por que só não passamos a função changeColor de uma vez?
+
+Acontece que quando passamos o changeColor, estamos fazendo uma chamada de função, e não uma referencia...
+
+Vamos pensar no seguinte exemplo, uma função normal:
+
+    function oi() {
+        console.log("oi");
+    }
+
+Essa função mostra um "oi" no console.
+
+Porém, se fossemos utilizar essa função com o setInterval, teríamos que utilizar da seguinte maneira:
+
+    setInterval(oi, 1000)
+
+Mas por que estamos passando a função oi sem parênteses? Porque quando utilizamos os parênteses, estamos fazendo uma chamada de função, e isso significa que estamos passando a função inteira, o que inclui o seu bloco de código (código que será executado) e o seu retorno, e o setInterval não quer isso.
+O setInterval quer uma referência a função, para que ele vá la e execute-a.
+
+Ok... Para utilizarmos uma função já criada antes, precisamos utiliza-la sem parênteses... Mas e se a função requer parâmetros? O que devemos fazer? Como vamos passar os parâmetros que são ESSENCIAIS para o seu funcionamento se nós não podemos fazer uma chamada?
+
+Para isso que surge a Arrow Function, que faz com que tudo funcione como deveria funcionar. A sintaxe é simples. Basta colocar parênteses vazios e a "arrow" apontando para a função sendo chamada:
+
+    () => changeColor(body, generateRgb(), transicao.value)
+
+\*/
