@@ -26,8 +26,8 @@ velocidade.addEventListener("input", function () {
     velocidade.value * 1000
   );
 
-  if (button.src == "http://127.0.0.1:5500/images/pause-button.png") {
-    button.src = "http://127.0.0.1:5500/images/play-button.png";
+  if (button.src == "http://127.0.0.1:5500/images/play-button.png") {
+    button.src = "http://127.0.0.1:5500/images/pause-button.png";
   }
   //esse if serve para "ligar" o botão caso esteja desligado, para assim começar a "rodar" o site de novo
 });
@@ -47,8 +47,8 @@ transicao.addEventListener("input", function () {
     velocidade.value * 1000
   );
 
-  if (button.src == "http://127.0.0.1:5500/images/pause-button.png") {
-    button.src = "http://127.0.0.1:5500/images/play-button.png";
+  if (button.src == "http://127.0.0.1:5500/images/play-button.png") {
+    button.src = "http://127.0.0.1:5500/images/pause-button.png";
   }
   //mesma coisa que a velocidade
 });
@@ -58,14 +58,14 @@ button.addEventListener("click", function () {
   /*
   Como isso funciona? Quando o botão é clicado, o código verifica a src da imagem, para assim concluir se é o "play-button" ou o "pause-button". Ele basicamente troca as imagens. Se for para pausar, ele da um "clearInterval(interval), para assim parar a execução do intervalo e, consequentemente, do código. Se for para continuar, ele cria o intervalo (igual às outras funções) "
   */
-  if (button.src == "http://127.0.0.1:5500/images/play-button.png") {
-    button.src = "http://127.0.0.1:5500/images/pause-button.png";
+  if (button.src == "http://127.0.0.1:5500/images/pause-button.png") {
+    button.src = "http://127.0.0.1:5500/images/play-button.png";
 
     if (interval) {
       clearInterval(interval);
     }
   } else {
-    button.src = "http://127.0.0.1:5500/images/play-button.png";
+    button.src = "http://127.0.0.1:5500/images/pause-button.png";
 
     if (interval) {
       clearInterval(interval);
@@ -82,7 +82,7 @@ button.addEventListener("click", function () {
 //
 /*FUNÇÕES*/
 //ler aquivo "funcoes"
-function generateRgb() {
+function generateRgb() {''
   //Essa função vai retornar uma lista com 3 valores (RGB) aleatórios
   return [
     Math.trunc(Math.random() * 256),
