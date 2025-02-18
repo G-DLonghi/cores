@@ -1,18 +1,21 @@
-*{
+* {
     margin: 0;
     padding: 0;
     font-family: "Lexend Giga";
 }
-body{
+
+body {
     height: 100vh;
     background-color: aqua;
 }
-header{
+
+header {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-h1{
+
+h1 {
     color: white;
     background-color: black;
 
@@ -20,14 +23,16 @@ h1{
     font-size: 100px;
     border: 10px solid transparent;
 }
-#main{
+
+#main {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 40px;
     width: 100%;
 }
-#menu{
+
+#menu {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -37,7 +42,8 @@ h1{
     height: 430px;
     background-color: black;
 }
-form{
+
+form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -46,15 +52,17 @@ form{
     height: 95%;
     color: white;
 }
-form div{
+
+form div {
     margin-top: 30px;
     margin-bottom: 30px;
 
     font-size: 40px;
 }
+
 .range {
     -webkit-appearance: none;
-    appearance: none; 
+    appearance: none;
     width: 200px;
     height: 30px;
     cursor: pointer;
@@ -62,12 +70,13 @@ form div{
     overflow: hidden;
     border-radius: 16px;
 }
-.svg {
+
+.img {
     position: relative;
     bottom: 30px;
-    filter: invert(1);  /* para deixar a imagem branca */
+    filter: invert(1);
+    /* para deixar a imagem branca */
 
     width: 80px;
-
     cursor: pointer;
 }
